@@ -1,0 +1,33 @@
+﻿{
+  "RegExDynamicReplacements": {
+    "__ProjectName__": "$ProjectName",
+    "TeamCityProjectTemplate(?!_)": "$TeamCityProjectId",
+    "TeamCityProjectTemplate(?=_\\d)": "$TeamCityProjectId",
+    "COMPONENT_PROJECT_TEMPLATE.VCS.Root": "$ProjectName + ' VCS Root'"
+  },
+  "Description": "Description of the [[$ProjectName]] component",
+  "Summary": "Summary of the [[$ProjectName]] component",
+  "Author": "MISSING AUTHOR NAME",
+  "ProjectName": "ComponentProjectTemplate",
+  "OctopusProjectNameSlug": "[[$ProjectName.ToLower().Replace(' ','-')]]",
+  "CompanyName": "Axian, Inc.",
+  "TfsProjectName": "Sample-Project",
+  "TeamCityParentProjectId": "TestProject",
+  "TeamCityProjectId": "[[$TeamCityParentProjectId]]_[[$TeamCityProjectNameForId]]",
+  "TeamCityProjectNameForId": "[[\"$ProjectName\" -replace '[^a-zA-Z0-9]','']]",
+  "GitName": "[[$ProjectName]]",
+  "Tags": "[[$ProjectName]]",
+  "RepoUrl": "https://www.github.com/[[$GitHubUserName]]/[[$TfsProjectName]]/_git/[[$ProjectName]]",
+  "NugetUrl": "[[$NugetPackagesUrl]]/[[$ProjectName]]",
+  "NugetPackagesUrl": "http:///nuget/Default",
+  "ChocolateyPackagesUrl": "http:///nuget/Chocolatey",
+  "OctopusPackagesUrl": "http:///nuget/Octopus",
+  "PowerShellPackagesUrl": "http:///nuget/powershell",
+  "PowerShellPackagesRepoName": "PSGallery",
+  "Copyright": "© [[[DateTime]::Now.Year]] [[$CompanyName]]",
+  "IconUrl": "http:///resources/sureid_default.png",
+  "OctoAddress": "MISSING OCTOPUS SERVER ADDRESS",
+  "VpnAddress": "MISSING VPN ADDRESS",
+  "StackName": "MISSING STACK NAME",
+  "OctoEnvironment": "MISSING OCTOPUS ENVIRONMENT"
+}
