@@ -6,7 +6,11 @@
     
     $vbAsm = Add-Type -AssemblyName Microsoft.VisualBasic -ErrorAction SilentlyContinue -PassThru
     $canRecycle = $true
-    if(!$vbAsm -or !([System.Type]::GetType('Microsoft.VisualBasic.FileIO.FileSystem'))) {
+	try {
+		$ioType = [Microsoft.VisualBasic.FileIO.FileSystem]
+	} catch { Write-Warning "Type not found: Microsoft.VisualBasic.FileIO.FileSystem"}
+	
+    if(!$vbAsm -or !$ioType) {
         $canRecycle = $false
     }
     
@@ -30,7 +34,7 @@
             }
         } else {
             Write-Warning ("Unable to move {0} to Recycle bin because the Microsoft.VisualBasic assembly is not available." -f $Path)
-            move -LiteralPath $Path $env:Temp
+            move -LiteralPath $Path $env:Temp -force
         }
     }
 }
